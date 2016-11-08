@@ -20,7 +20,7 @@ What are the functions in this code ?
 
 How to do decoding or speech enhancement in the test phase ?
 
-1. Please ref: DNN based speech enhancement tool is open now and can be downloaded at https://drive.google.com/file/d/0B5r5bvRpQ5DRXzJXd05BNl95alE/view
+1. Please ref: DNN based speech enhancement tool is open now and can be downloaded at https://drive.google.com/file/d/0B5r5bvRpQ5DRUEhEajl3SFMyWkU/view?usp=sharing
 
 What else can this code use for?
 
