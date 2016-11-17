@@ -21,6 +21,9 @@ What are the functions in this code ?
 How to do decoding or speech enhancement in the test phase ?
 
 1. Please ref: DNN based speech enhancement tool is open now and can be downloaded at https://drive.google.com/file/d/0B5r5bvRpQ5DRR1lIV1hpZ0RLQ0E/view?usp=sharing
+or (@ Baidu Yun)
+http://pan.baidu.com/s/1eRJGrx4 
+
 
 What else can this code use for?
 
