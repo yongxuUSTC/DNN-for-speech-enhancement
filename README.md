@@ -38,6 +38,5 @@ Please cite the following papers if you use this code:
 
 Some DNN based speech enhancemen demos:
 
-1. http://home.ustc.edu.cn/~xuyong62/demo/SE_DNN_taslp.html
-
-2. http://home.ustc.edu.cn/~xuyong62/demo/IS15.html
+http://staff.ustc.edu.cn/~jundu/The%20team/yongxu/demo/SE_DNN_taslp.html
+http://staff.ustc.edu.cn/~jundu/The%20team/yongxu/demo/IS15.html
