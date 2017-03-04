@@ -46,6 +46,8 @@ Please cite the following papers if you use this code:
 
 [2]An Experimental Study on Speech Enhancement Based on Deep Neural Networks.YongXu, JunDu, Li-Rong Dai and Chin-Hui Lee,IEEE signal processing letters, p. 65-68,vol.21,no. 1,January 2014
 
+[3] Multi-Objective Learning and Mask-Based Post-Processing for Deep Neural Network Based Speech Enhancement, Yong Xu, Jun Du, Zhen Huang, Li-Rong Dai, Chin-Hui Lee, Interspeech2015
+
 Some DNN based speech enhancemen demos:
 
 http://staff.ustc.edu.cn/~jundu/The%20team/yongxu/demo/SE_DNN_taslp.html
