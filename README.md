@@ -25,6 +25,12 @@ How to do decoding or speech enhancement in the test phase ?
 or (@ Baidu Yun)
 http://pan.baidu.com/s/1eRJGrx4 
 
+What kinds of noisy speech can the DNN-enh tool enhance ?
+1.  It can enhance any kinds of noisy speech, even the real-world noisy speech. one real-world noisy speech enh demo for the movie <Forrest Gump>: http://staff.ustc.edu.cn/~jundu/The%20team/yongxu/demo/IS15.html
+2. The model is trained only on TIMIT data, so it can get the best performance on the TIMIT test set. 
+3. The model can get the best performance on English dataset because TIMIT is US-English. But this tool still can be used to enhance the noisy speech in other languages, like Chinese.
+4. You can use multi-language data to retrain this model to get a general DNN-enh tool.
+
 
 What else can this code use for?
 
