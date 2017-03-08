@@ -11,6 +11,7 @@ How to prepare the input and output files ?
 1. use quicknet toolset to prepare Pfile as the input and the output files, Pfile is the big file of all training features.
 
 quicknet tool set is here : http://www1.icsi.berkeley.edu/Speech/qn.html
+how to get a Pfile example (Perl Script): https://github.com/yongxuUSTC/DNN-for-speech-enhancement/blob/master/how_to_get_pfile.txt
 
 What are the functions in this code ?
 
