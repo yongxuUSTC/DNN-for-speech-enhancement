@@ -1,0 +1,59 @@
+#############################################################################
+# A example for a Perl script to get a PFile
+# Quicknet tool set is here: http://www1.icsi.berkeley.edu/Speech/qn.html
+# http://www1.icsi.berkeley.edu/Speech/icsi-speech-tools.html
+#############################################################################
+#!/usr/local/bin/perl -w
+
+#attentions: please confirm that all the input files from windows system are converted from DOS to UNIX
+#attentions: please add path: export PATH=$PATH:/home/zhoupan/tools/QN/basic/bin
+
+my $ROOT_DIR  = "/disk4/yongxu_d4/get_timit_labpfile/lib";
+my $TOOL_DIR 	= "/home/yongxu/tools/QN/atlas1/bin";
+my $CF_DIR		= "$ROOT_DIR";
+
+my $len_scp   = "$CF_DIR/timit_115NT_7SNRs_each190utts_clean_lab_be_random_linux.len";
+
+my $fea_scp   = "$CF_DIR/timit_115NT_7SNRs_each190utts_clean_lab_be_random_linux.scp";
+
+my $fea_tr    = "$CF_DIR/timit_115NT_7SNRs_each190utts_clean_lab_be_random_linux.pfile";
+
+
+my $part_num  = 9693;
+my $split_num = 10;  #46980*4=187920句
+my $i;
+my @pid;
+my $pfile_list;
+
+
+print "ok\n";
+system("split -l $part_num -d -a 1 $fea_scp $fea_scp");
+system("split -l $part_num -d -a 1 $len_scp $len_scp");
+
+foreach $i (0..$split_num-1)
+{
+	defined($pid[$i] = fork) or die "can't fork: $!";
+	unless ($pid[$i])
+	{
+		system("$TOOL_DIR/feacat -period 16.0 -ipformat htk -deslenfile $len_scp$i -lists  -o $fea_tr$i $fea_scp$i");###这地方16ms要非常注意
+		exit(0);
+	}
+}
+
+$pfile_list = "";
+foreach $i (0..$split_num-1)
+{
+	waitpid($pid[$i], 0);
+	$pfile_list = $pfile_list . "$fea_tr$i ";
+}
+
+system("$TOOL_DIR/pfile_concat -o $fea_tr $pfile_list");
+
+##foreach $i (0..$split_num-1)
+##{
+##	system("rm -rf $fea_scp$i");
+##	system("rm -rf $len_scp$i");
+##	system("rm -rf $fea_tr$i");
+##}
+##system("rm -rf $fea_lst");
+
