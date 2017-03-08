@@ -1,5 +1,5 @@
 #############################################################################
-# A example for a Perl script to get a PFile
+# An example for a Perl script to get a PFile
 # Quicknet tool set is here: http://www1.icsi.berkeley.edu/Speech/qn.html
 # http://www1.icsi.berkeley.edu/Speech/icsi-speech-tools.html
 #############################################################################
@@ -12,15 +12,15 @@ my $ROOT_DIR  = "/disk4/yongxu_d4/get_timit_labpfile/lib";
 my $TOOL_DIR 	= "/home/yongxu/tools/QN/atlas1/bin";
 my $CF_DIR		= "$ROOT_DIR";
 
-my $len_scp   = "$CF_DIR/timit_115NT_7SNRs_each190utts_clean_lab_be_random_linux.len";
+my $len_scp   = "$CF_DIR/timit_115NT_7SNRs_each190utts_clean_lab_be_random_linux.len"; ### frame number for each feature file
 
-my $fea_scp   = "$CF_DIR/timit_115NT_7SNRs_each190utts_clean_lab_be_random_linux.scp";
+my $fea_scp   = "$CF_DIR/timit_115NT_7SNRs_each190utts_clean_lab_be_random_linux.scp"; ### feature file path for each feature file, *.len should be corresponding to the *.scp file (in the same order)
 
-my $fea_tr    = "$CF_DIR/timit_115NT_7SNRs_each190utts_clean_lab_be_random_linux.pfile";
+my $fea_tr    = "$CF_DIR/timit_115NT_7SNRs_each190utts_clean_lab_be_random_linux.pfile"; ### output big pfile
 
 
-my $part_num  = 9693;
-my $split_num = 10;  #46980*4=187920 utts
+my $part_num  = 9693; ###  how many utterances for each parallel part
+my $split_num = 10;  #46980*4=187920 utts  ### parallel computing in 10 parts
 my $i;
 my @pid;
 my $pfile_list;
