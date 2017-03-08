@@ -6,7 +6,7 @@
 #!/usr/local/bin/perl -w
 
 #attentions: please confirm that all the input files from windows system are converted from DOS to UNIX
-#attentions: please add path: export PATH=$PATH:/home/zhoupan/tools/QN/basic/bin
+#attentions: please add path: export PATH=$PATH:/home/xxx/tools/QN/basic/bin
 
 my $ROOT_DIR  = "/disk4/yongxu_d4/get_timit_labpfile/lib";
 my $TOOL_DIR 	= "/home/yongxu/tools/QN/atlas1/bin";
@@ -20,7 +20,7 @@ my $fea_tr    = "$CF_DIR/timit_115NT_7SNRs_each190utts_clean_lab_be_random_linux
 
 
 my $part_num  = 9693;
-my $split_num = 10;  #46980*4=187920句
+my $split_num = 10;  #46980*4=187920 utts
 my $i;
 my @pid;
 my $pfile_list;
@@ -35,7 +35,7 @@ foreach $i (0..$split_num-1)
 	defined($pid[$i] = fork) or die "can't fork: $!";
 	unless ($pid[$i])
 	{
-		system("$TOOL_DIR/feacat -period 16.0 -ipformat htk -deslenfile $len_scp$i -lists  -o $fea_tr$i $fea_scp$i");###这地方16ms要非常注意
+		system("$TOOL_DIR/feacat -period 16.0 -ipformat htk -deslenfile $len_scp$i -lists  -o $fea_tr$i $fea_scp$i");### frame shift = 16ms, attention here
 		exit(0);
 	}
 }
