@@ -10,6 +10,8 @@ How to prepare the input and output files ?
 
 1. use quicknet toolset to prepare Pfile as the input and the output files, Pfile is the big file of all training features.
 
+quicknet tool set is here : http://www1.icsi.berkeley.edu/Speech/qn.html
+
 What are the functions in this code ?
 
 1. ReLU or Sigmoid
