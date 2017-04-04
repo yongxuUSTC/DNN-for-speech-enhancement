@@ -9,8 +9,12 @@ How to use?
 How to prepare the input and output files ?
 
 0. Training clean speech data: standard TIMIT corpus training set (about 4 hours)
-   Training noise data: 115 noise types data, you can download here: http://staff.ustc.edu.cn/~jundu/The%20team/yongxu/demo/115noises.html
+
+   Training noise data: 115 noise types data, you can download here:
+   http://staff.ustc.edu.cn/~jundu/The%20team/yongxu/demo/115noises.html
+   
    Test clean speech data: standard TIMIT corpus test set
+   
    Test unseen noise type data: NoiseX-92 (15 types): http://www.speech.cs.cmu.edu/comp.speech/Section1/Data/noisex.html
 
 1. use quicknet toolset to prepare Pfile as the input and the output files, Pfile is the big file of all training features.
