@@ -1,3 +1,19 @@
+###############################################################################################
+# detailed steps for get pfile
+# step1: used the tool "Wav2LogSpec.exe" to extract all ".lsp" files from raw audio files. (RAW means no header, there is header info in wav format audio files, help/wav2raw.exe can delete the header info)
+# step2: use "toolbox/le2be.m" to convert the little endian (le) ".lsp" features into big endian (be) ".lsp_be" features. Here it is a little tricky, maybe you can find some better ways.
+# step3: use "toolbox/randomlist.pl" to rand your scp lists
+# step4: prepare ".len" TXT file (the frame number of each ".lsp" file, one number on each line). You can use #"toolbox/get_len_from_scp.pl"
+#".len" example:
+#120
+#234
+#451
+#99
+#...
+# step5: use the ".scp (be format feature files, not le format feature files)" and ".len" to get pfile as following.
+# summary: "Wav2LogSpec.exe" only can extract "little endian (le)" format feautres from RAW audio files. But quicknet tools only accept "big endian (be)" feature files. So that is why you need "le2be". Normally, HTK toolset (like HCopy.exe) can directly extract "be" formart features (log-power spectra), but i never try it.
+# summary: here it is a little tricky and ugly, i am planing to re-write all of the DNN-SE stuff based on Tensorflow.
+
 #############################################################################
 # An example for a Perl script to get a PFile
 # Quicknet tool set is here: http://www1.icsi.berkeley.edu/Speech/qn.html
