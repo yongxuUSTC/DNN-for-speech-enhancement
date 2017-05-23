@@ -3,7 +3,7 @@
 # step1: used the tool "Wav2LogSpec.exe" to extract all ".lsp" files from raw audio files. (RAW means no header, there is header info in wav format audio files, help/wav2raw.exe can delete the header info)
 # step2: use "toolbox/le2be.m" to convert the little endian (le) ".lsp" features into big endian (be) ".lsp_be" features. Here it is a little tricky, maybe you can find some better ways.
 # step3: use "toolbox/randomlist.pl" to rand your scp lists
-# step4: prepare ".len" TXT file (the frame number of each ".lsp" file, one number on each line). You can use #"toolbox/get_len_from_scp.pl"
+# step4: prepare ".len" TXT file (the frame number of each ".lsp" file, one number on each line). You can use #"toolbox/getlenscp.exe in.scp out.len"
 #".len" example:
 #120
 #234
