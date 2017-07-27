@@ -44,23 +44,58 @@ __global__ void kernDropout(int n, float p ,float* in, float* rand_vec)
 
 }
 
-__global__ void kernSigmoid(int n, float* in_vec, float* out_vec)
+//////sigmoid
+//__global__ void kernSigmoid(int n, float* in_vec, float* out_vec)
+//{
+//    int i = (blockIdx.x * blockDim.x) + threadIdx.x;
+//    if (i < n)
+//			out_vec[i] = 1.0f/(1.0f + expf(- in_vec[i]));
+//}
+
+//__global__ void kernDsigmoid(int n, float* in_vec, float* out_vec)
+//{
+//    int i = (blockIdx.x * blockDim.x) + threadIdx.x;
+//
+//    if (i<n)
+//    {
+//			const float y = in_vec[i];
+//			out_vec[i] = (1.0f - y) * y;
+//    }
+//}
+
+////////ReLU
+global void kernSigmoid(int n, float* in_vec, float* out_vec)
 {
-    int i = (blockIdx.x * blockDim.x) + threadIdx.x;
-    if (i < n)
-			out_vec[i] = 1.0f/(1.0f + expf(- in_vec[i]));
+int i = (blockIdx.x * blockDim.x) + threadIdx.x;
+if (i < n)
+//sigmoid
+//out_vec[i] = 1.0f/(1.0f + expf(- in_vec[i]));
+
+  //ReLU
+  if(in_vec[i]>0)
+		out_vec[i]=in_vec[i];
+	  else
+		out_vec[i]=0.0f;
 }
 
-__global__ void kernDsigmoid(int n, float* in_vec, float* out_vec)
+global void kernDsigmoid(int n, float* in_vec, float* out_vec)
 {
-    int i = (blockIdx.x * blockDim.x) + threadIdx.x;
+int i = (blockIdx.x * blockDim.x) + threadIdx.x;
 
-    if (i<n)
-    {
-			const float y = in_vec[i];
-			out_vec[i] = (1.0f - y) * y;
-    }
+if (i<n)
+{
+	//sigmoid
+		//const float y = in_vec[i];
+		//out_vec[i] = (1.0f - y) * y;
+  
+  //ReLU
+  if(in_vec[i]>0)
+		out_vec[i]=1.0f;
+	  else
+		out_vec[i]=0.0f;
 }
+}
+//////////////////////////////////////////////////////////
 
 __global__ void  kernSoftmax(int rows, int cols, float* in_vec, float* out_vec)
 {
@@ -279,5 +314,5 @@ __global__ void kernUpdatedelta(int size, float* delta, float* weights, float* g
 {
     int i = (blockIdx.x * blockDim.x) + threadIdx.x;
     if (i < size)
-			delta[i] = momentum * delta[i] - (1-momentum)*lr*(gradient[i] / n + weightcost * weights[i]);//3.16 dropoutʱҪ��1-momentum
+			delta[i] = momentum * delta[i] - (1-momentum)*lr*(gradient[i] / n + weightcost * weights[i]);//3.16 dropoutÊ±Òª³Ë1-momentum
 }
