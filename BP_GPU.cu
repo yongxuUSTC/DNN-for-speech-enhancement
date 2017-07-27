@@ -301,12 +301,12 @@ void BP_GPU::train(int n_frames, float* in, const float *targ)
 			if(GPU_selected == 1)
 				{
 					//printf("in-in \n");
-					//printf("realin[0][1]=%f,realtarg[0][1]=%f\n",realin[0][1],realtarg[0][1]);//Õâ¸öµØ·½Êä²»³öÀ´£¬Ò²²»±¨´í
+					//printf("realin[0][1]=%f,realtarg[0][1]=%f\n",realin[0][1],realtarg[0][1]);//è¿™ä¸ªåœ°æ–¹è¾“ä¸å‡ºæ¥ï¼Œä¹Ÿä¸æŠ¥é”™
 					//printf("dev[0].in[1]=%f,dev[0].targ[1]=%f\n",in[1],targ[1]);
 					//printf("begin to run train_bunch_single\n");
 					
-					train_bunch_single(frames_this_bunch, realin[0], realtarg[0]);//[0]±íÊ¾µÚ0¿écuda device,//realin[0], realtarg[0]
-			    //ÕâÀïÊÇÃ¿¸öbatchµØÈ¥ÅÜ£¬ÓÃrealinºÍrealtarg£¬À´Ã¿´ÎÖ¸ÏòGPUÀïµÄÃ¿¸öbatch
+					train_bunch_single(frames_this_bunch, realin[0], realtarg[0]);//[0]è¡¨ç¤ºç¬¬0å—cuda device,//realin[0], realtarg[0]
+			    //è¿™é‡Œæ˜¯æ¯ä¸ªbatchåœ°å»è·‘ï¼Œç”¨realinå’Œrealtargï¼Œæ¥æ¯æ¬¡æŒ‡å‘GPUé‡Œçš„æ¯ä¸ªbatch
 			    //printf("complete train_bunch_single\n");
 			    }
 			//else
@@ -331,7 +331,7 @@ void BP_GPU::train(int n_frames, float* in, const float *targ)
 }
 
 ////void BP_GPU::train(int n_frames, const float* in, const int *targ)
-////ĞìÓÂĞ´£¬½«ÉÏÃæµÄ¶à¸öGPUÈ¥ÅÜµÄ³ÌĞò×¢ÊÍµô£¬ÒÔÃâ·¢Éú»ìÂÒ
+////å¾å‹‡å†™ï¼Œå°†ä¸Šé¢çš„å¤šä¸ªGPUå»è·‘çš„ç¨‹åºæ³¨é‡Šæ‰ï¼Œä»¥å…å‘ç”Ÿæ··ä¹±
 //void BP_GPU::train(int n_frames, const float* in, const float *targ)////////////////////////////by yongxu
 //{
 //
@@ -346,7 +346,7 @@ void BP_GPU::train(int n_frames, float* in, const float *targ)
 //
 //	int n_frames_part = n_frames/1;
 //
-//// for (t=0;t<560;t++)//ÕâÀïcheckÁË£¬Æ´Ö¡ºó£¬ÑµÁ·¼¯ÈıÖ¡¶ÔÓ¦targetÒ»Ö¡µÄÏÖÏó
+//// for (t=0;t<560;t++)//è¿™é‡Œcheckäº†ï¼Œæ‹¼å¸§åï¼Œè®­ç»ƒé›†ä¸‰å¸§å¯¹åº”targetä¸€å¸§çš„ç°è±¡
 //// { printf("in[%d]=%f,",t,in[t]);
 ////   }
 ////   printf ("\n");
@@ -376,11 +376,11 @@ void BP_GPU::train(int n_frames, float* in, const float *targ)
 //		{
 //			printf("in \n");
 //
-//					//printf("realin[0]=%f,realtarg[0]=%f\n",realin[0],realtarg[0]);//Õâ¸öµØ·½Êä²»³öÀ´£¬Ò²²»±¨´í
+//					//printf("realin[0]=%f,realtarg[0]=%f\n",realin[0],realtarg[0]);//è¿™ä¸ªåœ°æ–¹è¾“ä¸å‡ºæ¥ï¼Œä¹Ÿä¸æŠ¥é”™
 //					//printf("dev[0].in[1]=%f,dev[0].targ[1]=%f\n",in[1],targ[1]);
 //					printf("begin to run train_bunch_single\n");
 //					
-//					train_bunch_single(frames_this_bunch, realin, realtarg);//[0]±íÊ¾µÚ0¿écuda device
+//					train_bunch_single(frames_this_bunch, realin, realtarg);//[0]è¡¨ç¤ºç¬¬0å—cuda device
 //			    printf("complete train_bunch_single\n");
 //			    
 //
@@ -413,18 +413,18 @@ float BP_GPU::CrossValid(int n_frames, const float* in, const float *targ)//////
 	//int *out = new int [bunchsize];
 	int out_dims= layersizes[numlayers-1];
 	
-  float *out = new float [bunchsize*out_dims];///////////////////////////////by yongxu, Õâ¸öµØ·½ÊÇÒ»¸ö¶şÎ¬ÌØÕ÷£¨batch*feadim£©
+  float *out = new float [bunchsize*out_dims];///////////////////////////////by yongxu, è¿™ä¸ªåœ°æ–¹æ˜¯ä¸€ä¸ªäºŒç»´ç‰¹å¾ï¼ˆbatch*feadimï¼‰
 	//int *out;
 	//cudaMallocHost((void**)&out, bunchsize * sizeof(int));
 	int i,j,d;
 	//int t;
 	int frames_this_bunch;	// Number of frames to handle this bunch
-	int n_input = layersizes[0];//ÊäÈëµÄÌØÕ÷Î¬Êı£¨¿ÉÄÜÊÇÀ©Õ¹Ö¡µÄ£©
+	int n_input = layersizes[0];//è¾“å…¥çš„ç‰¹å¾ç»´æ•°ï¼ˆå¯èƒ½æ˜¯æ‰©å±•å¸§çš„ï¼‰
 	float *realin;
 
 
 //
-// for (t=0;t<560;t++)//ÕâÀïcheckÁË£¬Æ´Ö¡ºó£¬ÑµÁ·¼¯ÈıÖ¡¶ÔÓ¦targetÒ»Ö¡µÄÏÖÏó
+// for (t=0;t<560;t++)//è¿™é‡Œcheckäº†ï¼Œæ‹¼å¸§åï¼Œè®­ç»ƒé›†ä¸‰å¸§å¯¹åº”targetä¸€å¸§çš„ç°è±¡
 // { printf("in[%d]=%f,",t,in[t]);
 //   }
 //   printf ("\n");
@@ -444,7 +444,7 @@ float BP_GPU::CrossValid(int n_frames, const float* in, const float *targ)//////
 
 	FILE *fp=fopen("CV_out.txt","w");
 
-	for (i=0; i< n_frames; i+= bunchsize)//n_framesÊÇ¸ÃCV¼¯µÄ×ÜÖ¡Êı£»bunchsizeÖ¸µÄÊÇÒ»¸öbunchÀïÓĞ¶àÉÙÖ¡£»È»ºóÃ¿¸öbunch·Ö±ğ¼ÆËã
+	for (i=0; i< n_frames; i+= bunchsize)//n_framesæ˜¯è¯¥CVé›†çš„æ€»å¸§æ•°ï¼›bunchsizeæŒ‡çš„æ˜¯ä¸€ä¸ªbunché‡Œæœ‰å¤šå°‘å¸§ï¼›ç„¶åæ¯ä¸ªbunchåˆ†åˆ«è®¡ç®—
 	{
 		
 		frames_this_bunch = (bunchsize > n_frames - i)?(n_frames - i):bunchsize;
@@ -457,9 +457,9 @@ float BP_GPU::CrossValid(int n_frames, const float* in, const float *targ)//////
 		//fprintf(fp,"%d\n\n",frames_this_bunch);
 		for(j =0; j< frames_this_bunch;j++)
 		{
-		  for(d=0;d<out_dims;d++)///////////////////////////////////////by yongxu, ÎÒÃÇµÄÊä³öÌØÕ÷Ê¼ÖÕÊÇout_dimsÎ¬
+		  for(d=0;d<out_dims;d++)///////////////////////////////////////by yongxu, æˆ‘ä»¬çš„è¾“å‡ºç‰¹å¾å§‹ç»ˆæ˜¯out_dimsç»´
 		  {
-		    squared_err = squared_err + (out[j*out_dims+d]-targ[j*out_dims+d])*(out[j*out_dims+d]-targ[j*out_dims+d]);/////////////by yongxu, ÌØ±ğ×¢Òâ£ºsquared errorÊÇÓëcorrect_samplesÏà·´µÄ¸ÅÄî
+		    squared_err = squared_err + (out[j*out_dims+d]-targ[j*out_dims+d])*(out[j*out_dims+d]-targ[j*out_dims+d]);/////////////by yongxu, ç‰¹åˆ«æ³¨æ„ï¼šsquared erroræ˜¯ä¸correct_samplesç›¸åçš„æ¦‚å¿µ
 			
 			//fprintf(fp,"%f ",out[j*out_dims+d]);
 			}
@@ -508,10 +508,10 @@ void BP_GPU::train_bunch_single(int n_frames, float *in, const float* targ)
 	float* cur_weights;		// Weights inputing to the current layer.
 	float cur_lrate =  lrate;
 	
-	//float *out_check = new float [n_frames*out_dims];//ÎªÁËcheckÍøÂçµÄÊä³ö
+	//float *out_check = new float [n_frames*out_dims];//ä¸ºäº†checkç½‘ç»œçš„è¾“å‡º
 
  // printf("in train_bunch_single\n");
-  //FILE *fp=fopen("log_train_bunch_single.txt","w");//ÔÚÕâÀï£¬ºÃÏñĞ´²»½øÀ´£¬ÄÑµÀÊÇÒòÎªÔÚcudaÀï£¬±ØĞëÒª´«µ½cpuÀï²ÅĞĞ£¿
+  //FILE *fp=fopen("log_train_bunch_single.txt","w");//åœ¨è¿™é‡Œï¼Œå¥½åƒå†™ä¸è¿›æ¥ï¼Œéš¾é“æ˜¯å› ä¸ºåœ¨cudaé‡Œï¼Œå¿…é¡»è¦ä¼ åˆ°cpué‡Œæ‰è¡Œï¼Ÿ
 
 
 	//// Forward
@@ -521,12 +521,12 @@ void BP_GPU::train_bunch_single(int n_frames, float *in, const float* targ)
 		prev_layer = cur_layer - 1;
 		cur_layer_units = layersizes[cur_layer];
 		prev_layer_units = layersizes[prev_layer];
-		cur_layer_size = cur_layer_units * n_frames;//batchÀïµÄÖ¡Êı
+		cur_layer_size = cur_layer_units * n_frames;//batché‡Œçš„å¸§æ•°
 		prev_layer_size = prev_layer_units * n_frames;
 		cur_layer_x = dev[0].layer_x[cur_layer];
 		cur_layer_y = dev[0].layer_y[cur_layer];
 		
-		//if (cur_layer==1)//ÎªÏÂÃæµÄdropout´úÂë×¢ÊÍµôµÄ
+		//if (cur_layer==1)//ä¸ºä¸‹é¢çš„dropoutä»£ç æ³¨é‡Šæ‰çš„
 		//	prev_layer_y = in;
 		//else
 		//	prev_layer_y = dev[0].layer_y[prev_layer];
@@ -560,9 +560,9 @@ void BP_GPU::train_bunch_single(int n_frames, float *in, const float* targ)
 		if (cur_layer != numlayers - 1){
 			DevSigmoid(streams[0],cur_layer_size, cur_layer_x, cur_layer_y);
 		}
-		else{  /////////////////////////////Ö±½Ó×¢ÊÍµô£¬Êä³öµØ¾ÍÊÇlinearµÄ£¿£¿£¿
+		else{  /////////////////////////////ç›´æ¥æ³¨é‡Šæ‰ï¼Œè¾“å‡ºåœ°å°±æ˜¯linearçš„ 
 			//DevSoftmax(streams[0],n_frames, cur_layer_units, cur_layer_x, dev[0].out);
-			DevSigmoid(streams[0],cur_layer_size, cur_layer_x, cur_layer_y);
+			//DevSigmoid(streams[0],cur_layer_size, cur_layer_x, cur_layer_y);
 			//DevLinearOutCopy(streams[0],n_frames, cur_layer_units, cur_layer_x, dev[0].out);
 	    //out=cur_layer_x;
 	    //cudaSetDevice(0);
@@ -570,10 +570,10 @@ void BP_GPU::train_bunch_single(int n_frames, float *in, const float* targ)
 	    cudaMemcpy(dev[0].out,cur_layer_y,n_frames*cur_layer_units*sizeof(float),cudaMemcpyDeviceToDevice);
 	    //cudaMemcpy(out_check,cur_layer_x,n_frames*cur_layer_units*sizeof(float),cudaMemcpyDeviceToHost);
 		
-		//¼ì²éÏßĞÔÊä³ö
+		//æ£€æŸ¥çº¿æ€§è¾“å‡º
 //		for(i =0; i< n_frames;i++)
 //		{
-//		  for(j=0;j<out_dims;j++)///////////////////////////////////////by yongxu, ÎÒÃÇµÄÊä³öÌØÕ÷Ê¼ÖÕÊÇout_dimsÎ¬
+//		  for(j=0;j<out_dims;j++)///////////////////////////////////////by yongxu, æˆ‘ä»¬çš„è¾“å‡ºç‰¹å¾å§‹ç»ˆæ˜¯out_dimsç»´
 //		  {
 //			
 //			printf("%f ",out_check[i*out_dims+j]);
@@ -618,10 +618,10 @@ void BP_GPU::train_bunch_single(int n_frames, float *in, const float* targ)
 		//{
 		
 		//DevSubIndex(streams[0], n_frames, cur_layer_units, dev[0].out, targ, cur_layer_dedx);
-		//´Ócpu¸´ÖÆµ½gpu
+		//ä»cpuå¤åˆ¶åˆ°gpu
 	  //    DevLinearOutCopy(streams[0], n_frames, cur_layer_units, dev[0].out, targ, cur_layer_dedx);
 		//}
-		//¶ÔÆ½·½Îó²îÇóµ¼£¬//////////////////////////////////////////yongxu
+		//å¯¹å¹³æ–¹è¯¯å·®æ±‚å¯¼ï¼Œ//////////////////////////////////////////yongxu
 		else
 		{
 		  //printf("begin to cal squared error\n");
@@ -698,7 +698,7 @@ void BP_GPU::cv_bunch_single(int n_frames, const float *in, float* out)/////////
 	float *devout;/////////////////////////////////by yongxu
 	devnew_vf("devout", n_frames*out_dims, &devout);
 	
-	//dropout²ÎÊı
+	//dropoutå‚æ•°
 	int weight_size;
 	    float vis_keep;
 	float hid_keep;
@@ -748,9 +748,9 @@ void BP_GPU::cv_bunch_single(int n_frames, const float *in, float* out)/////////
 		if (cur_layer != numlayers - 1){
 			DevSigmoid(streams[0],cur_layer_size, cur_layer_x, cur_layer_y);
 		}
-		else{  /////////////////////////////////////////yongxu ×¢ÊÍµô¾Í¿ÉÒÔµÃµ½Ò»¸öÏßĞÔÊä³ö£¿£¿£¿
+		else{  /////////////////////////////////////////yongxu æ³¨é‡Šæ‰å°±å¯ä»¥å¾—åˆ°ä¸€ä¸ªçº¿æ€§è¾“å‡º 
 		//	DevSoftmax(streams[0],n_frames, cur_layer_units, cur_layer_x, dev[0].out);
-		DevSigmoid(streams[0],cur_layer_size, cur_layer_x, cur_layer_y);
+		//DevSigmoid(streams[0],cur_layer_size, cur_layer_x, cur_layer_y);
 		//	DevGetMaxIndex(streams[0], cur_layer_units, n_frames, dev[0].out,  devout);
 		//DevLinearOutCopy(streams[0],n_frames, cur_layer_units, cur_layer_x, dev[0].out);
 		//cudaMemcpy(dev[0].out,cur_layer_x,n_frames*cur_layer_units*sizeof(float),cudaMemcpyDeviceToDevice);
@@ -809,7 +809,7 @@ void BP_GPU::cv_bunch_single(int n_frames, const float *in, float* out)/////////
 //			if (cur_layer != numlayers - 1){
 //				DevSigmoid(streams[i], layersizes[cur_layer] * n_frames_part[i], dev[i].layer_x[cur_layer], dev[i].layer_y[cur_layer]);
 //			}
-//			//else{ /////////////////////////////////yongxu, ×¢ÊÍµô¾ÍÄÜµÃµ½ÏßĞÔÊä³öÂğ£¿
+//			//else{ /////////////////////////////////yongxu, æ³¨é‡Šæ‰å°±èƒ½å¾—åˆ°çº¿æ€§è¾“å‡ºå—ï¼Ÿ
 //			//	DevSoftmax(streams[i],n_frames_part[i], layersizes[cur_layer], dev[i].layer_x[cur_layer], dev[i].out);
 //			//}
 //			
@@ -828,13 +828,13 @@ void BP_GPU::cv_bunch_single(int n_frames, const float *in, float* out)/////////
 //				DevVecMul(streams[i],   layersizes[cur_layer] * n_frames_part[i], dev[i].layer_dydx[cur_layer], dev[i].layer_dedy[cur_layer], dev[i].layer_dedx[cur_layer]);
 //
 //			}
-//			//else/////////////////////////////////yongxu, ×¢ÊÍµô¾ÍÄÜµÃµ½ÏßĞÔÊä³öÂğ£¿
+//			//else/////////////////////////////////yongxu, æ³¨é‡Šæ‰å°±èƒ½å¾—åˆ°çº¿æ€§è¾“å‡ºå—ï¼Ÿ
 //			//{
 //			//
 //			//	DevSubIndex(streams[i], n_frames_part[i], layersizes[cur_layer], dev[i].out, targ[i], dev[i].layer_dedx[cur_layer]);
 //			//	
 //			//}
-//		    //¶ÔÆ½·½Îó²îÇóµ¼£¬//////////////////////////////////////////yongxu
+//		    //å¯¹å¹³æ–¹è¯¯å·®æ±‚å¯¼ï¼Œ//////////////////////////////////////////yongxu
 //		    else
 //		    {
 //		
