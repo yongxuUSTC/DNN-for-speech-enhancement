@@ -567,7 +567,7 @@ void BP_GPU::train_bunch_single(int n_frames, float *in, const float* targ)
 	    //out=cur_layer_x;
 	    //cudaSetDevice(0);
 	    //printf("come here\n");
-	    cudaMemcpy(dev[0].out,cur_layer_y,n_frames*cur_layer_units*sizeof(float),cudaMemcpyDeviceToDevice);
+	    cudaMemcpy(dev[0].out,cur_layer_x,n_frames*cur_layer_units*sizeof(float),cudaMemcpyDeviceToDevice);
 	    //cudaMemcpy(out_check,cur_layer_x,n_frames*cur_layer_units*sizeof(float),cudaMemcpyDeviceToHost);
 		
 		//检查线性输出
@@ -754,7 +754,7 @@ void BP_GPU::cv_bunch_single(int n_frames, const float *in, float* out)/////////
 		//	DevGetMaxIndex(streams[0], cur_layer_units, n_frames, dev[0].out,  devout);
 		//DevLinearOutCopy(streams[0],n_frames, cur_layer_units, cur_layer_x, dev[0].out);
 		//cudaMemcpy(dev[0].out,cur_layer_x,n_frames*cur_layer_units*sizeof(float),cudaMemcpyDeviceToDevice);
-		cudaMemcpy(devout,cur_layer_y,n_frames*cur_layer_units*sizeof(float),cudaMemcpyDeviceToDevice);
+		cudaMemcpy(devout,cur_layer_x,n_frames*cur_layer_units*sizeof(float),cudaMemcpyDeviceToDevice);
 		}
 	}
 	//fromdev_vi_vi("devout",n_frames,devout,out, streams[0]);
