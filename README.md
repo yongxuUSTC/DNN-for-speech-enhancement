@@ -1,4 +1,4 @@
-This code is only for research. If you want to use it for commercial reason, please contact me: yong.xu.ustc@gmailc.om
+This code is only for research. If you want to use it for commercial reason, please contact me: yong.xu.ustc@gmail.com
 
 GPU code for Deep neural network (DNN) based speech enhancement
 
