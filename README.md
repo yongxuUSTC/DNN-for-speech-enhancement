@@ -38,7 +38,7 @@ What are the functions in this code ?
 
 How to do decoding or speech enhancement in the test phase ?
 
-1. Please ref: DNN based speech enhancement tool is open now and can be downloaded at https://drive.google.com/file/d/0B5r5bvRpQ5DRR1lIV1hpZ0RLQ0E/view?usp=sharing
+1. Please ref: DNN based speech enhancement tool is open now and can be downloaded at https://drive.google.com/file/d/1Wg14r0m41kWv2ja-stBkq2uZgjOP5yME/view?usp=sharing or https://drive.google.com/file/d/0B5r5bvRpQ5DRR1lIV1hpZ0RLQ0E/view?usp=sharing
 
 or (@ Baidu Yun)
 http://pan.baidu.com/s/1eRJGrx4 
